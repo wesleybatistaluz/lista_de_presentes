@@ -18,6 +18,7 @@
         <a href="index.html#versiculos">Palavra</a>
         <a href="index.html#galeria">Fotos</a>
         <a href="index.html#cerimonia">O Grande Dia</a>
+        <a href="#contato">Contato</a>
         <a href="presentes.html" class="btn btn--outline btn--sm">Lista de Presentes</a>
       </nav>
       <button class="nav-toggle" aria-label="Abrir menu"><span></span><span></span><span></span></button>
@@ -62,6 +63,15 @@
         </span>
       </div>
 
+      <div class="info-banner info-banner--voltagem">
+        <span class="icon">🔌</span>
+        <span>
+          <strong>Importante:</strong> todos os eletrodomésticos desta lista são
+          <strong>127V</strong>. Se for comprar em outra loja ou escolher uma variação
+          do anúncio, confira a voltagem antes de finalizar.
+        </span>
+      </div>
+
       <div class="filters">
         <button class="filter-btn is-active" data-filter="todos">Todos</button>
         <button class="filter-btn" data-filter="especiais">Presentes Especiais</button>
@@ -71,6 +81,39 @@
         <button class="filter-btn" data-filter="lavanderia">Lavanderia</button>
         <button class="filter-btn" data-filter="quarto">Quarto</button>
         <button class="filter-btn" data-filter="banheiro">Banheiro</button>
+        <button class="filter-btn filter-btn--pix" data-filter="pix">💙 Presente em Pix</button>
+      </div>
+
+      <!-- ==========================================================
+           ABA PIX
+           Troque o conteúdo de <code id="pix-key"> pela sua chave Pix
+           (CPF, telefone, e-mail ou chave aleatória) e confira o nome
+           em .pix-holder.
+           =========================================================== -->
+      <div class="pix-panel" id="pix-panel">
+        <img src="assets/img/flora/corner-flower.svg" class="floral-corner floral-corner--sm floral-corner--tl" alt="">
+        <img src="assets/img/flora/corner-flower.svg" class="floral-corner floral-corner--sm floral-corner--br" alt="">
+
+        <span class="kicker">Contribuição</span>
+        <h2>Presente em Pix</h2>
+        <div class="divider">✦</div>
+        <p class="pix-intro">
+          Se você preferir, pode nos presentear com uma contribuição via Pix —
+          vamos usar para montar nosso lar e realizar a viagem dos nossos sonhos.
+          Qualquer valor é recebido com muito carinho. 💙
+        </p>
+
+        <div class="pix-key-box">
+          <span class="pix-key-label">Chave Pix</span>
+          <code class="pix-key" id="pix-key">35999275253</code>
+          <button class="btn btn--primary btn--sm" id="btn-copiar-pix" type="button">
+            Copiar chave
+          </button>
+          <span class="pix-feedback" id="pix-feedback" role="status" aria-live="polite"></span>
+        </div>
+
+        <p class="pix-holder">Em nome de <strong>Wesley Batista Luz</strong></p>
+
       </div>
 
       <div class="gift-grid" id="gift-grid"></div>
@@ -78,8 +121,39 @@
     </div>
   </section>
 
+  <section class="section section--alt contato" id="contato">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">Dúvidas?</span>
+        <h2>Falar com os Noivos</h2>
+        <div class="divider">✦</div>
+        <p>Pode chamar a gente no WhatsApp — vai ser um prazer conversar com você.</p>
+      </div>
+      <div class="contato-grid">
+        <a class="contato-card" href="https://wa.me/5535999275253" target="_blank" rel="noopener">
+          <span class="contato-icon">💬</span>
+          <span class="contato-nome">Wesley</span>
+          <span class="contato-num">+55 35 99927-5253</span>
+          <span class="contato-cta">Chamar no WhatsApp ↗</span>
+        </a>
+        <a class="contato-card" href="https://wa.me/5535991259660" target="_blank" rel="noopener">
+          <span class="contato-icon">💬</span>
+          <span class="contato-nome">Júlia</span>
+          <span class="contato-num">+55 35 99125-9660</span>
+          <span class="contato-cta">Chamar no WhatsApp ↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <footer class="footer">
     <p class="display">Júlia &amp; Wesley</p>
+    <p class="footer-wa">
+      Falar com os noivos:
+      <a href="https://wa.me/5535999275253" target="_blank" rel="noopener">Wesley</a>
+      ·
+      <a href="https://wa.me/5535991259660" target="_blank" rel="noopener">Júlia</a>
+    </p>
     <p>Obrigado por fazer parte da nossa história. 💙</p>
   </footer>
 

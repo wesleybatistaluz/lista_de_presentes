@@ -133,7 +133,7 @@ Funciona bem também. Suba o repositório (passos 1 e 2 acima) e vá em
 `https://SEU_USUARIO.github.io/SEU_REPO/`. Atenção: no plano gratuito o
 repositório precisa ser **público**.
 
-## 5. Sobre a chave do Supabase ficar visível
+## 5. Sobre a chave do Supabase ficar visível (é normal)
 
 A chave em `js/supabase-config.js` é uma chave *publishable* (pública por
 natureza): ela roda no navegador do visitante, então **fica visível no código
@@ -155,7 +155,7 @@ Se preferir eliminar esse risco por completo, remova o botão "Desfazer" do site
 e troque a policy de update para `with check (claimed = true)` — aí ninguém
 consegue desmarcar pelo site, só por esse painel.
 
-## 5. Categorias e "presente único" x "pode repetir"
+## 6. Categorias e "presente único" x "pode repetir"
 
 Em `js/presentes-data.js`, cada item tem:
 
@@ -167,3 +167,32 @@ Em `js/presentes-data.js`, cada item tem:
 
 Você pode ajustar qualquer um desses valores livremente conforme a sua
 preferência.
+
+## 7. Aba do Pix
+
+Na lista de presentes existe a aba **"💙 Presente em Pix"**, que troca a grade
+de produtos por um painel com a chave e um botão "Copiar chave".
+
+Para alterar a chave, edite em `presentes.html`:
+
+```html
+<code class="pix-key" id="pix-key">35999275253</code>
+<p class="pix-holder">Em nome de <strong>Wesley Batista Luz</strong></p>
+```
+
+Serve qualquer formato de chave (telefone, CPF, e-mail ou chave aleatória) —
+todos foram testados e cabem no layout, inclusive no celular.
+
+O botão de copiar usa a API moderna do navegador, que só funciona em
+**HTTPS ou localhost**. Como Vercel, Netlify e GitHub Pages servem tudo em
+HTTPS, funciona normalmente quando publicado. Se por algum motivo falhar, o
+site seleciona a chave automaticamente para o convidado dar Ctrl+C.
+
+## 8. Contato dos noivos e voltagem
+
+- Os WhatsApps ficam na seção **"Falar com os Noivos"** (nas duas páginas) e
+  também no rodapé, usando links `https://wa.me/NUMERO`. Para trocar, procure
+  por `wa.me` em `index.html` e `presentes.html`.
+- A lista de presentes tem um aviso destacado de que **todos os
+  eletrodomésticos são 127V**. Está no bloco
+  `<div class="info-banner info-banner--voltagem">` em `presentes.html`.

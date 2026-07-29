@@ -171,16 +171,70 @@ let filtroAtual = "todos";
 function renderGrid(filter = filtroAtual) {
   filtroAtual = filter;
   const grid = document.getElementById("gift-grid");
+  const vazio = document.getElementById("empty-state");
+  const pixPanel = document.getElementById("pix-panel");
+
+  // A aba do Pix não é uma categoria de produto: ela troca a grade de
+  // presentes pelo painel com a chave.
+  if (filter === "pix") {
+    grid.innerHTML = "";
+    grid.style.display = "none";
+    vazio.style.display = "none";
+    pixPanel.classList.add("is-visible");
+    return;
+  }
+
+  pixPanel.classList.remove("is-visible");
+  grid.style.display = "";
   grid.innerHTML = "";
+
   const items = PRESENTES.filter(
     (i) => filter === "todos" || (filter === "especiais" ? i.destaque : i.categoria === filter)
   );
-  if (!items.length) {
-    document.getElementById("empty-state").style.display = "block";
-  } else {
-    document.getElementById("empty-state").style.display = "none";
-  }
+  vazio.style.display = items.length ? "none" : "block";
   items.forEach((item) => grid.appendChild(renderCard(item)));
+}
+
+function setupPix() {
+  const btn = document.getElementById("btn-copiar-pix");
+  const chaveEl = document.getElementById("pix-key");
+  const feedback = document.getElementById("pix-feedback");
+  if (!btn || !chaveEl) return;
+
+  btn.addEventListener("click", async () => {
+    const chave = chaveEl.textContent.trim();
+
+    // Caminho principal: API moderna. Exige contexto seguro (HTTPS ou
+    // localhost) e a janela em foco.
+    try {
+      await navigator.clipboard.writeText(chave);
+      feedback.textContent = "Chave copiada! 💙";
+      setTimeout(() => (feedback.textContent = ""), 4000);
+      return;
+    } catch {
+      /* segue para o plano B */
+    }
+
+    // Plano B: seleciona o texto e tenta o copiar clássico. Se nem isso rolar,
+    // pelo menos a chave fica selecionada para o convidado dar Ctrl+C.
+    const range = document.createRange();
+    range.selectNodeContents(chaveEl);
+    const sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+
+    let copiou = false;
+    try {
+      copiou = document.execCommand("copy");
+    } catch {
+      copiou = false;
+    }
+
+    feedback.textContent = copiou
+      ? "Chave copiada! 💙"
+      : "Chave selecionada — use Ctrl+C para copiar.";
+    setTimeout(() => (feedback.textContent = ""), 4000);
+  });
 }
 
 function setupFilters() {
@@ -198,6 +252,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Desenha a lista na hora, sem esperar o banco. Assim, mesmo que o Supabase
   // esteja lento ou fora do ar, os convidados já veem os presentes e os links.
   setupFilters();
+  setupPix();
   renderGrid("todos");
 
   // Depois, quando as marcações chegarem, redesenha para exibir quais
