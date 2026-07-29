@@ -519,21 +519,6 @@ img { max-width: 100%; display: block; }
 .badge--quarto { background: var(--rose-dust); }
 .badge--banheiro { background: var(--blush); }
 
-.gift-card .star-tag {
-  position: absolute;
-  top: 10px; right: 10px;
-  z-index: 2;
-  width: 26px; height: 26px;
-  border-radius: 50%;
-  background: var(--gold);
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: .85rem;
-  box-shadow: var(--shadow-soft);
-}
-
 .gift-card-img {
   aspect-ratio: 1/1;
   background: var(--mist);

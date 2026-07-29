@@ -128,7 +128,6 @@ function renderCard(item) {
 
   card.innerHTML = `
     <span class="badge badge--${item.categoria}">${CATEGORIAS[item.categoria] || item.categoria}</span>
-    ${item.destaque ? '<span class="star-tag" title="Presente especial">✦</span>' : ""}
     <div class="claimed-overlay">
       💙 Este presente já<br>foi escolhido com carinho
       <button class="btn-desmarcar" type="button">Marcou por engano? Desfazer</button>
@@ -189,7 +188,7 @@ function renderGrid(filter = filtroAtual) {
   grid.innerHTML = "";
 
   const items = PRESENTES.filter(
-    (i) => filter === "todos" || (filter === "especiais" ? i.destaque : i.categoria === filter)
+    (i) => filter === "todos" || i.categoria === filter
   );
   vazio.style.display = items.length ? "none" : "block";
   items.forEach((item) => grid.appendChild(renderCard(item)));

@@ -159,14 +159,16 @@ consegue desmarcar pelo site, só por esse painel.
 
 Em `js/presentes-data.js`, cada item tem:
 
+- `categoria` → define em qual aba o item aparece e a tag colorida do card.
+  Valores possíveis: `cozinha`, `utensilios`, `sala`, `lavanderia`, `quarto`,
+  `banheiro`.
 - `unique: true` → só uma pessoa pode dar (aparece o botão "Já dei este
-  presente" e, ao confirmar, o presente fica bloqueado pra sempre).
+  presente" e, ao confirmar, o presente fica bloqueado).
 - `unique: false` → pode ser dado por várias pessoas (roupas de cama,
   toalhas), sem botão de bloqueio.
-- `destaque: true` → aparece também na aba "Presentes Especiais".
 
 Você pode ajustar qualquer um desses valores livremente conforme a sua
-preferência.
+preferência. Para mover um item de aba, basta trocar a `categoria`.
 
 ## 7. Aba do Pix
 
