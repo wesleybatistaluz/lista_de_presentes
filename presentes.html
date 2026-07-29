@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lista de Presentes | Júlia & Wesley</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -156,7 +157,9 @@
     <p>Obrigado por fazer parte da nossa história. 💙</p>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <!-- A biblioteca do Supabase (~80 KB) NÃO entra aqui de propósito: ela é
+       baixada sob demanda por js/presentes.js, depois que a lista já
+       apareceu na tela. Assim os presentes não esperam por ela. -->
   <script src="js/supabase-config.js"></script>
   <script src="js/presentes-data.js"></script>
   <script src="js/presentes.js"></script>

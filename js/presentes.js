@@ -44,6 +44,23 @@ function saveLocalClaims() {
   localStorage.setItem(LOCAL_KEY, JSON.stringify([...claimedIds]));
 }
 
+const SUPABASE_CDN =
+  "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js";
+
+// Baixa a biblioteca do Supabase só quando ela é realmente necessária, para
+// não atrasar o primeiro desenho da lista de presentes.
+function carregarBibliotecaSupabase() {
+  if (window.supabase) return Promise.resolve();
+  return new Promise((resolve, reject) => {
+    const s = document.createElement("script");
+    s.src = SUPABASE_CDN;
+    s.async = true;
+    s.onload = resolve;
+    s.onerror = () => reject(new Error("falha ao baixar a biblioteca do Supabase"));
+    document.head.appendChild(s);
+  });
+}
+
 async function initSupabase() {
   if (!supabaseConfigured()) {
     document.getElementById("db-warning").style.display = "flex";
@@ -56,6 +73,7 @@ async function initSupabase() {
   // Qualquer falha aqui (chave errada, projeto fora do ar, sem internet) não
   // pode impedir a lista de presentes de aparecer — por isso o try/catch.
   try {
+    await carregarBibliotecaSupabase();
     supabaseClient = window.supabase.createClient(
       window.SUPABASE_URL,
       window.SUPABASE_ANON_KEY
@@ -123,7 +141,15 @@ function buyLink(item) {
   return `https://lista.mercadolivre.com.br/${encodeURIComponent(item.nome)}`;
 }
 
-function renderCard(item) {
+// As primeiras imagens são as que aparecem sem rolar a tela: carregam com
+// prioridade. O resto fica preguiçoso, chegando conforme o convidado desce.
+const IMGS_ACIMA_DA_DOBRA = 8;
+
+function renderCard(item, indice = 99) {
+  const acimaDaDobra = indice < IMGS_ACIMA_DA_DOBRA;
+  const attrsImg = acimaDaDobra
+    ? 'loading="eager" fetchpriority="high"'
+    : 'loading="lazy" fetchpriority="low"';
   const isClaimed = item.unique && claimedIds.has(item.id);
   const card = document.createElement("article");
   card.className = "gift-card" + (isClaimed ? " is-claimed" : "");
@@ -137,7 +163,7 @@ function renderCard(item) {
       <button class="btn-desmarcar" type="button">Marcou por engano? Desfazer</button>
     </div>
     <div class="gift-card-img">
-      <img src="${IMG_BASE}${item.img}" alt="${item.nome}" loading="lazy">
+      <img src="${IMG_BASE}${item.img}" alt="${item.nome}" ${attrsImg} decoding="async">
     </div>
     <div class="gift-card-body">
       <h3 class="gift-card-name">${item.nome}</h3>
@@ -199,7 +225,9 @@ function renderGrid(filter = filtroAtual) {
     (i) => filter === "todos" || i.categoria === filter
   );
   vazio.style.display = items.length ? "none" : "block";
-  items.forEach((item) => grid.appendChild(renderCard(item)));
+  const frag = document.createDocumentFragment();
+  items.forEach((item, i) => frag.appendChild(renderCard(item, i)));
+  grid.appendChild(frag);
 }
 
 function setupPix() {
