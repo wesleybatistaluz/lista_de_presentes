@@ -1,0 +1,12 @@
+# Arquivos de trabalho / originais (ficam em ../_originais_site_casamento)
+crop.py
+Captura de tela*.png
+
+# Sistema
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Editores
+.vscode/
+.idea/

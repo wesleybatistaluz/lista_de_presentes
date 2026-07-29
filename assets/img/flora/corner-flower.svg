@@ -1,0 +1,44 @@
+<svg viewBox="0 0 260 260" width="260" height="260" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <g id="petal">
+      <ellipse cx="0" cy="-17" rx="9" ry="16" />
+    </g>
+    <g id="flower">
+      <use href="#petal" transform="rotate(0)" fill="#A9C1DD" opacity="0.9" />
+      <use href="#petal" transform="rotate(72)" fill="#93B2D6" opacity="0.9" />
+      <use href="#petal" transform="rotate(144)" fill="#A9C1DD" opacity="0.9" />
+      <use href="#petal" transform="rotate(216)" fill="#93B2D6" opacity="0.9" />
+      <use href="#petal" transform="rotate(288)" fill="#A9C1DD" opacity="0.9" />
+      <circle r="5.5" fill="#C9A66B" />
+    </g>
+    <g id="leaf">
+      <path d="M0,0 C10,-6 22,-6 30,0 C22,6 10,6 0,0 Z" />
+    </g>
+  </defs>
+
+  <g fill="none" stroke="#7C9CC4" stroke-width="1.6" stroke-linecap="round" opacity="0.75">
+    <path d="M6,10 C40,26 62,54 78,92" />
+    <path d="M14,4 C48,10 84,22 108,46" />
+    <path d="M78,92 C92,104 96,118 92,132" />
+  </g>
+
+  <g opacity="0.85">
+    <use href="#leaf" transform="translate(30,26) rotate(35) scale(0.85)" fill="#7C9CC4" />
+    <use href="#leaf" transform="translate(52,44) rotate(58) scale(1.05)" fill="#35506E" opacity="0.55" />
+    <use href="#leaf" transform="translate(20,54) rotate(120) scale(0.9)" fill="#7C9CC4" />
+    <use href="#leaf" transform="translate(70,74) rotate(95) scale(0.8)" fill="#35506E" opacity="0.5" />
+    <use href="#leaf" transform="translate(86,108) rotate(150) scale(0.75)" fill="#7C9CC4" />
+  </g>
+
+  <use href="#flower" transform="translate(22,16) scale(1.15)" />
+  <use href="#flower" transform="translate(58,40) scale(0.85) rotate(24)" />
+  <use href="#flower" transform="translate(84,86) scale(0.65) rotate(-18)" />
+  <use href="#flower" transform="translate(30,66) scale(0.5) rotate(60)" />
+
+  <g fill="#C9A66B" opacity="0.8">
+    <circle cx="46" cy="66" r="2.2" />
+    <circle cx="66" cy="30" r="2" />
+    <circle cx="98" cy="104" r="2.2" />
+    <circle cx="10" cy="40" r="1.8" />
+  </g>
+</svg>

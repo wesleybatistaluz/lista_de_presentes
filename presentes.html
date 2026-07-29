@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Presentes | Júlia & Wesley</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="container">
+      <a href="index.html" class="logo">J<span>&amp;</span>W</a>
+      <nav class="nav">
+        <a href="index.html#historia">Nós Dois</a>
+        <a href="index.html#versiculos">Palavra</a>
+        <a href="index.html#galeria">Fotos</a>
+        <a href="index.html#cerimonia">O Grande Dia</a>
+        <a href="presentes.html" class="btn btn--outline btn--sm">Lista de Presentes</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <img src="assets/img/flora/corner-flower.svg" class="floral-corner floral-corner--tl floral-corner--below-header" alt="">
+    <img src="assets/img/flora/corner-flower.svg" class="floral-corner floral-corner--br" alt="">
+    <div class="container">
+      <span class="kicker">Com carinho</span>
+      <h1>Lista de Presentes</h1>
+      <p>Sua presença já é o nosso maior presente. Mas se quiser nos ajudar a montar nosso novo lar, escolhemos com cuidado cada item desta lista no Mercado Livre.</p>
+      <div class="verse-strip">
+        <blockquote>"O que acha um cônjuge acha uma coisa boa e alcança o favor do Senhor."</blockquote>
+        <cite>Provérbios 18:22</cite>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+
+      <div class="info-banner" id="db-warning" style="display:none;">
+        <span class="icon">⚙️</span>
+        <span>
+          O controle de "presentes já dados" ainda não está configurado.
+          Os botões de compra funcionam normalmente, mas os presentes únicos
+          não vão travar para os outros convidados até você configurar o
+          Supabase — veja o <strong>README.md</strong> do site.
+        </span>
+      </div>
+
+      <div class="info-banner">
+        <span class="icon">💡</span>
+        <span>
+          Clique em <strong>"Comprar no Mercado Livre"</strong> para ir direto ao produto —
+          o link abre em uma nova aba. Presentes maiores (geladeira, TV, eletros grandes)
+          têm um botão <strong>"Já dei este presente"</strong>: assim que alguém confirma,
+          ele fica marcado para não repetir. Itens como roupas de cama e toalhas podem
+          ser dados por mais de uma pessoa, sem problema.
+        </span>
+      </div>
+
+      <div class="filters">
+        <button class="filter-btn is-active" data-filter="todos">Todos</button>
+        <button class="filter-btn" data-filter="especiais">Presentes Especiais</button>
+        <button class="filter-btn" data-filter="cozinha">Cozinha</button>
+        <button class="filter-btn" data-filter="utensilios">Utensílios</button>
+        <button class="filter-btn" data-filter="sala">Sala</button>
+        <button class="filter-btn" data-filter="lavanderia">Lavanderia</button>
+        <button class="filter-btn" data-filter="quarto">Quarto</button>
+        <button class="filter-btn" data-filter="banheiro">Banheiro</button>
+      </div>
+
+      <div class="gift-grid" id="gift-grid"></div>
+      <p class="empty-state" id="empty-state">Nenhum presente nessa categoria por aqui.</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p class="display">Júlia &amp; Wesley</p>
+    <p>Obrigado por fazer parte da nossa história. 💙</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/presentes-data.js"></script>
+  <script src="js/presentes.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
