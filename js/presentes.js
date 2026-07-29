@@ -1,8 +1,12 @@
 const IMG_BASE = "assets/img/presentes/";
 const TABLE = "presentes_dados";
 
+// Itens com preco null (ainda não informado) mostram um aviso discreto em vez
+// de um valor inventado — o convidado vê o preço real ao abrir o anúncio.
 const money = (v) =>
-  v.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+  typeof v === "number"
+    ? v.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })
+    : null;
 
 const CATEGORIAS = {
   cozinha: "Cozinha",
@@ -137,7 +141,11 @@ function renderCard(item) {
     </div>
     <div class="gift-card-body">
       <h3 class="gift-card-name">${item.nome}</h3>
-      <span class="gift-card-price">${money(item.preco)}</span>
+      ${
+        money(item.preco)
+          ? `<span class="gift-card-price">${money(item.preco)}</span>`
+          : `<span class="gift-card-price gift-card-price--sem">Ver preço no anúncio</span>`
+      }
       ${!item.link ? '<span class="link-pending">link pendente de cadastro</span>' : ""}
       <div class="gift-card-actions">
         <a class="btn btn--primary btn--sm" href="${buyLink(item)}" target="_blank" rel="noopener">

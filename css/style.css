@@ -549,6 +549,13 @@ img { max-width: 100%; display: block; }
   color: var(--navy-deep);
   font-weight: 700;
 }
+.gift-card-price--sem {
+  font-family: var(--font-body);
+  font-size: .88rem;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--serenity-deep);
+}
 .gift-card-actions {
   margin-top: auto;
   display: flex;

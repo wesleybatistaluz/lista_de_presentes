@@ -162,6 +162,9 @@ Em `js/presentes-data.js`, cada item tem:
 - `categoria` → define em qual aba o item aparece e a tag colorida do card.
   Valores possíveis: `cozinha`, `utensilios`, `sala`, `lavanderia`, `quarto`,
   `banheiro`.
+- `preco` → o valor em reais (ex: `129.90`). Se estiver `null`, o card mostra
+  *"Ver preço no anúncio"* em vez de um número — útil quando você ainda não
+  anotou o preço. Para preencher, troque `null` pelo valor.
 - `unique: true` → só uma pessoa pode dar (aparece o botão "Já dei este
   presente" e, ao confirmar, o presente fica bloqueado).
 - `unique: false` → pode ser dado por várias pessoas (roupas de cama,
