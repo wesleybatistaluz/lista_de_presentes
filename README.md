@@ -5,25 +5,30 @@ Site estático (HTML/CSS/JS puro, sem build) com página inicial + lista de pres
 ## Estrutura
 
 ```
-index.html          Página inicial (história, fotos, cerimônia, contagem regressiva)
-presentes.html       Lista de presentes
-css/style.css        Estilo (paleta azul serenity)
+index.html            Página inicial (foto + versículo, versículos, galeria,
+                      cerimônia, contagem regressiva)
+presentes.html        Lista de presentes
+css/style.css         Estilo (paleta azul serenity)
 js/main.js            Menu mobile + contagem regressiva
 js/presentes-data.js  Os 37 itens da lista (nome, preço, foto, link, categoria)
 js/presentes.js       Renderiza os cards e controla "já foi dado"
-js/supabase-config.js Chaves do banco (Supabase) — precisa preencher
-assets/img/casal/      Fotos do casal (placeholders por enquanto)
-assets/img/presentes/  Fotos dos produtos (já recortadas dos seus prints)
+js/supabase-config.js Chaves do banco (Supabase) — já configurado
+assets/img/casal/     Fotos do casal
+assets/img/presentes/ Fotos dos produtos
+assets/img/flora/     Flores decorativas (SVG)
 ```
 
-## 1. Trocar as fotos do casal
+Os arquivos de trabalho (prints originais da lista, fotos originais, script de
+recorte) ficam fora desta pasta, em `../_originais_site_casamento/`, para não
+irem para o site publicado.
 
-Em `assets/img/casal/` estão fotos de placeholder (gradiente azul). Troque cada
-arquivo por uma foto real, mantendo o mesmo nome:
+## 1. Fotos do casal
 
-- `foto-historia.jpg` — foto usada na seção "Nossa História"
-- `foto-01.jpg` até `foto-06.jpg` — galeria de fotos
-- `hero-bg.jpg` — não é usada ainda, pode ignorar ou usar no futuro
+Já estão em `assets/img/casal/`. Para trocar alguma, basta substituir o arquivo
+mantendo o mesmo nome:
+
+- `foto-historia.jpg` — foto grande da seção com o versículo
+- `foto-01.jpg` até `foto-06.jpg` — galeria
 
 ## 2. Completar os links dos presentes
 
@@ -86,32 +91,69 @@ dispositivos.
 
 ## 4. Publicar
 
-### Opção A — GitHub Pages (gratuito, mais simples)
+O repositório git local já está criado, com o primeiro commit feito na branch
+`main`. Nada foi enviado para a internet ainda.
 
-1. Crie um repositório no GitHub e suba esta pasta:
+Como o site é 100% estático e o banco (Supabase) é externo, **qualquer
+hospedagem de site estático funciona igual** — não existe nada rodando no
+servidor. Não precisa configurar build command nem output directory.
+
+### Recomendado — Vercel conectado ao GitHub
+
+Vantagem: depois de configurado, cada `git push` atualiza o site sozinho — útil
+porque os links do Mercado Livre ainda vão ser preenchidos aos poucos.
+
+1. Crie um repositório novo no GitHub (pode ser **privado**).
+2. Suba esta pasta:
    ```bash
-   git init
-   git add .
-   git commit -m "site do casamento"
-   git branch -M main
    git remote add origin https://github.com/SEU_USUARIO/SEU_REPO.git
    git push -u origin main
    ```
-2. No GitHub: **Settings > Pages > Source: branch `main`, pasta `/ (root)`**.
-3. O site fica em `https://SEU_USUARIO.github.io/SEU_REPO/`.
+3. Entre em https://vercel.com/new, faça login com o GitHub e importe o
+   repositório. Aceite tudo como está e clique em **Deploy**.
+4. Em **Settings > Domains** dá para trocar o endereço para algo como
+   `julia-e-wesley.vercel.app`.
 
-### Opção B — Vercel (gratuito, deploy por comando ou GitHub)
+Para atualizar o site depois:
 
 ```bash
-npm i -g vercel
-vercel
+git add -A && git commit -m "atualiza links dos presentes" && git push
 ```
 
-Ou conecte o repositório do GitHub direto em https://vercel.com/new — como é
-um site estático, não precisa configurar build command nem output directory.
+### Alternativa mais rápida — Netlify Drop
 
-Os dois funcionam igual, já que o banco (Supabase) é externo — pode escolher
-o que for mais prático para você.
+Se quiser ver no ar em dois minutos, sem git e sem instalar nada: abra
+https://app.netlify.com/drop e arraste a pasta `site_lista_presentes` para a
+página. Sai uma URL HTTPS na hora. Para atualizar, arrasta de novo.
+
+### Alternativa — GitHub Pages
+
+Funciona bem também. Suba o repositório (passos 1 e 2 acima) e vá em
+**Settings > Pages > Source: branch `main`, pasta `/ (root)`**. O site fica em
+`https://SEU_USUARIO.github.io/SEU_REPO/`. Atenção: no plano gratuito o
+repositório precisa ser **público**.
+
+## 5. Sobre a chave do Supabase ficar visível
+
+A chave em `js/supabase-config.js` é uma chave *publishable* (pública por
+natureza): ela roda no navegador do visitante, então **fica visível no código
+fonte do site em qualquer hospedagem** — isso é normal e esperado, não é um
+vazamento.
+
+Quem realmente protege os dados são as policies de RLS no Supabase. Com a
+configuração atual, um visitante pode marcar e desmarcar presentes — o que é
+justamente o comportamento desejado. O risco teórico é alguém mal-intencionado
+marcar tudo como dado de propósito. Para uma lista compartilhada entre família e
+amigos isso é bem improvável, e se acontecer é fácil desfazer: no painel do
+Supabase, em **Table Editor > presentes_dados**, rode
+
+```sql
+update presentes_dados set claimed = false;
+```
+
+Se preferir eliminar esse risco por completo, remova o botão "Desfazer" do site
+e troque a policy de update para `with check (claimed = true)` — aí ninguém
+consegue desmarcar pelo site, só por esse painel.
 
 ## 5. Categorias e "presente único" x "pode repetir"
 
