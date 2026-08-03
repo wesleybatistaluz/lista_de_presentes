@@ -30,18 +30,32 @@ mantendo o mesmo nome:
 - `foto-historia.jpg` — foto grande da seção com o versículo
 - `foto-01.jpg` até `foto-06.jpg` — galeria
 
-## 2. Completar os links dos presentes
+## 2. Adicionar ou editar presentes
 
-Abra `js/presentes-data.js`. Cada item tem um campo `link: ""`. Cole ali a URL
-do anúncio no Mercado Livre (a mesma da sua lista de favoritos), por exemplo:
+Cada presente é uma linha em `js/presentes-data.js`:
 
 ```js
-{ id: "geladeira-electrolux", ..., link: "https://produto.mercadolivre.com.br/MLB-..." },
+{ id: "mesa-jantar", nome: "Mesa de Jantar 4 Lugares", preco: 719.90,
+  categoria: "sala", unique: true, img: "mesa-jantar.webp",
+  link: "https://br.shp.ee/SNzrJBJT" },
 ```
 
-Enquanto o campo estiver vazio, o botão "Comprar" abre uma busca no Mercado
-Livre pelo nome do produto (funciona, mas não é o anúncio exato que você
-escolheu) — por isso vale a pena preencher todos.
+- **`link`** — a URL do anúncio. O botão de compra **detecta a loja pelo link**
+  e mostra o texto certo: "Comprar na Shopee", "Comprar no Mercado Livre",
+  "Comprar na Amazon" ou "Comprar no Magalu". Se o campo ficar vazio, o botão
+  cai numa busca pelo nome do produto no Mercado Livre.
+- **`img`** — o nome do arquivo dentro de `assets/img/presentes/`. Se o arquivo
+  **ainda não existir**, o card mostra automaticamente a ilustração
+  "foto em breve" (`_sem-foto.svg`) em vez de uma imagem quebrada. Assim que
+  você salvar a foto com esse nome, ela aparece sozinha — não precisa mexer no
+  código.
+- **`preco`** — veja a seção 6.
+
+### Tamanho das imagens
+
+Salve as fotos dos produtos com no máximo **600 px** no lado maior. Os cards
+exibem a imagem a ~211 px, então arquivos maiores que isso só deixam o site
+mais lento sem melhorar nada. Formato `.webp` é o ideal.
 
 ## 3. Configurar o banco (Supabase) para o "já foi dado"
 

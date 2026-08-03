@@ -55,9 +55,6 @@ const PRESENTES = [
   { id: "toalhas-buddemeyer", nome: "Jogo de Toalhas Buddemeyer Brisa 4 Peças", preco: 142.40, categoria: "banheiro", unique: false, img: "toalhas-buddemeyer.webp", link: "https://www.mercadolivre.com.br/jogo-de-toalhas-buddemeyer-brisa-banho-begemarrom-4-pecas/p/MLB53715102?pdp_filters=item_id%3AMLB5973935708&sid=bookmarks#polycard_client=wishlist&wid=MLB5973935708&sid=bookmarks" },
 
   // --- Itens adicionados depois -----------------------------------------
-  // O preço destes está como null porque o Mercado Livre bloqueia leitura
-  // automática. Basta trocar null pelo valor (ex: preco: 129.90) e o card
-  // passa a exibir o preço em vez de "Ver preço no anúncio".
   { id: "cobre-leito-queen", nome: "Kit Cobre Leito Queen 3 Peças Estampado Dupla Face", preco: 77.90 , categoria: "quarto", unique: false, img: "cobre-leito-queen.webp", link: "https://produto.mercadolivre.com.br/MLB-6173959622-kit-cobre-leito-queen-3-pecas-estampado-colcha-dupla-face-_JM?searchVariation=189429034320" },
   { id: "colcha-matelasse", nome: "Colcha Matelassê Arabeske Queen com Porta-Travesseiros Bege — Lyor", preco: 128.31, categoria: "quarto", unique: false, img: "colcha-matelasse.webp", link: "https://www.mercadolivre.com.br/colcha-matelasse-arabeske-queen-porta-travesseiros-bege-lyor/p/MLB68988262" },
   { id: "colcha-borboletas", nome: "Colcha Casal Queen Coleção Borboletas 3 Peças Bege/Tabaco", preco: 184.20, categoria: "quarto", unique: false, img: "colcha-borboletas.webp", link: "https://produto.mercadolivre.com.br/MLB-2601673279-colcha-casal-queen-coleco-borboletas-03-pecas-bege-taba-_JM?searchVariation=185361879719" },
@@ -65,4 +62,17 @@ const PRESENTES = [
   { id: "jogo-copos-vidro", nome: "Jogo de Copos de Vidro Nadir Oca 300ml 6 Peças", preco: 27.51, categoria: "utensilios", unique: true, img: "jogo-copos-vidro.webp", link: "https://www.mercadolivre.com.br/jogo-kit-copo-vidro-oca-300ml-com-6-pecas-nadir-agua-suco/p/MLB32105423" },
   { id: "kit-utensilios-cozinha", nome: "Kit 19 Peças Utensílios de Cozinha com Tábua e Silicone", preco: 58.00, categoria: "utensilios", unique: true, img: "kit-utensilios-cozinha.webp", link: "https://www.mercadolivre.com.br/19-pecas-kit-utensilios-cozinha-tabua-em-silicone-espatula/up/MLBU4136852272?pdp_filters=item_id%3AMLB7001074502" },
   { id: "aparelho-jantar-30", nome: "Aparelho de Jantar 30 Peças — Pratos, Copos e Talheres Inox", preco:76.53, categoria: "utensilios", unique: true, img: "aparelho-jantar-30.webp", link: "https://www.mercadolivre.com.br/aparelho-de-jantar-30-pecas--pratos--copos--talheres-inox/up/MLBU3193464030?pdp_filters=item_id%3AMLB5400493586" },
+
+  // --- Itens da Shopee --------------------------------------------------
+  // O botão de compra detecta a loja pelo link e mostra "Comprar na Shopee".
+  // As fotos ainda não foram baixadas: enquanto o arquivo não existir na pasta
+  // assets/img/presentes/, o card mostra a ilustração "foto em breve". Basta
+  // salvar a imagem com o nome indicado em "img" e ela aparece sozinha.
+  { id: "mesa-jantar", nome: "Mesa de Jantar 4 Lugares Magiore — Viero Móveis", preco: 719.90, categoria: "sala", unique: true, img: "mesa-jantar.webp", link: "https://br.shp.ee/SNzrJBJT" },
+  { id: "sofa-retratil", nome: "Sofá Retrátil Reclinável Verona 2,00m Suede Cinza — King House", preco: 1724.91, categoria: "sala", unique: true, img: "sofa-retratil.webp", link: "https://br.shp.ee/YBpLjtJj" },
+  { id: "porta-temperos", nome: "Porta-Temperos Giratório com Potes de Vidro e Tampa Dosadora", preco: 29.60, categoria: "utensilios", unique: true, img: "porta-temperos.webp", link: "https://br.shp.ee/tMJyMhp3" },
+  // Preço varia conforme o tamanho escolhido (R$ 54,99 a R$ 172,99), então
+  // fica null para não prometer um valor errado ao convidado.
+  { id: "cesto-roupa-suja", nome: "Cesto de Roupa Suja de Bambu 72L com Tampa e Alças", preco: null, categoria: "lavanderia", unique: true, img: "cesto-roupa-suja.webp", link: "https://br.shp.ee/Cj57T9ti" },
+  { id: "varal-de-chao", nome: "Varal de Chão Dobrável Reforçado Portátil", preco: null, categoria: "lavanderia", unique: true, img: "varal-de-chao.webp", link: "https://shopee.com.br/Varal-de-Ch%C3%A3o-Dobr%C3%A1vel-Refor%C3%A7ado-Port%C3%A1til-Secar-Roupas-i.1251322845.22594854233" },
 ];

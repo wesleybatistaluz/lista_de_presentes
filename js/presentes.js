@@ -141,6 +141,20 @@ function buyLink(item) {
   return `https://lista.mercadolivre.com.br/${encodeURIComponent(item.nome)}`;
 }
 
+// A lista tem itens de lojas diferentes, então o botão mostra o nome da loja
+// certa em vez de dizer "Mercado Livre" para tudo.
+function textoBotaoCompra(item) {
+  const l = (item.link || "").toLowerCase();
+  if (l.includes("shp.ee") || l.includes("shopee")) return "Comprar na Shopee";
+  if (l.includes("amazon")) return "Comprar na Amazon";
+  if (l.includes("magazineluiza") || l.includes("magalu")) return "Comprar no Magalu";
+  return "Comprar no Mercado Livre";
+}
+
+// Se a foto do produto ainda não estiver na pasta, cai numa ilustração neutra
+// em vez de mostrar ícone de imagem quebrada.
+const IMG_PLACEHOLDER = IMG_BASE + "_sem-foto.svg";
+
 // As primeiras imagens são as que aparecem sem rolar a tela: carregam com
 // prioridade. O resto fica preguiçoso, chegando conforme o convidado desce.
 const IMGS_ACIMA_DA_DOBRA = 8;
@@ -163,7 +177,8 @@ function renderCard(item, indice = 99) {
       <button class="btn-desmarcar" type="button">Marcou por engano? Desfazer</button>
     </div>
     <div class="gift-card-img">
-      <img src="${IMG_BASE}${item.img}" alt="${item.nome}" ${attrsImg} decoding="async">
+      <img src="${IMG_BASE}${item.img}" alt="${item.nome}" ${attrsImg} decoding="async"
+           onerror="this.onerror=null; this.src='${IMG_PLACEHOLDER}'; this.classList.add('sem-foto');">
     </div>
     <div class="gift-card-body">
       <h3 class="gift-card-name">${item.nome}</h3>
@@ -175,7 +190,7 @@ function renderCard(item, indice = 99) {
       ${!item.link ? '<span class="link-pending">link pendente de cadastro</span>' : ""}
       <div class="gift-card-actions">
         <a class="btn btn--primary btn--sm" href="${buyLink(item)}" target="_blank" rel="noopener">
-          Comprar no Mercado Livre ↗
+          ${textoBotaoCompra(item)} ↗
         </a>
         ${
           item.unique

@@ -1,0 +1,16 @@
+<svg viewBox="0 0 300 300" width="300" height="300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Foto em breve">
+  <rect width="300" height="300" fill="#EEF2F8"/>
+
+  <!-- laço do presente -->
+  <g transform="translate(150,132)" fill="none" stroke="#A9C1DD" stroke-width="4.5" stroke-linecap="round">
+    <rect x="-46" y="-14" width="92" height="66" rx="5"/>
+    <path d="M-46,6 H46"/>
+    <path d="M0,-14 V52"/>
+    <path d="M0,-14 C-16,-30 -34,-30 -30,-18 C-27,-10 -12,-12 0,-14 Z" fill="#C9A66B" stroke="#C9A66B"/>
+    <path d="M0,-14 C16,-30 34,-30 30,-18 C27,-10 12,-12 0,-14 Z" fill="#C9A66B" stroke="#C9A66B"/>
+  </g>
+
+  <text x="150" y="222" text-anchor="middle"
+        font-family="Jost, Segoe UI, sans-serif" font-size="17" fill="#7C9CC4"
+        letter-spacing="1.6">foto em breve</text>
+</svg>
