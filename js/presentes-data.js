@@ -1,7 +1,8 @@
 /*
   Lista de presentes — Júlia & Wesley
   ------------------------------------
-  Cada item tem um campo "link" com a URL do anúncio no Mercado Livre.
+  Cada item tem um campo "link" com a URL do anúncio. O botão de compra
+  identifica a loja pelo link (Mercado Livre, Shopee, Amazon, Magalu).
 
   categoria (define em qual aba o item aparece e a tag mostrada no card):
     cozinha | utensilios | sala | lavanderia | quarto | banheiro
@@ -65,14 +66,9 @@ const PRESENTES = [
 
   // --- Itens da Shopee --------------------------------------------------
   // O botão de compra detecta a loja pelo link e mostra "Comprar na Shopee".
-  // As fotos ainda não foram baixadas: enquanto o arquivo não existir na pasta
-  // assets/img/presentes/, o card mostra a ilustração "foto em breve". Basta
-  // salvar a imagem com o nome indicado em "img" e ela aparece sozinha.
   { id: "mesa-jantar", nome: "Mesa de Jantar 4 Lugares Magiore — Viero Móveis", preco: 719.90, categoria: "sala", unique: true, img: "mesa-jantar.webp", link: "https://br.shp.ee/SNzrJBJT" },
   { id: "sofa-retratil", nome: "Sofá Retrátil Reclinável Verona 2,00m Suede Cinza — King House", preco: 1724.91, categoria: "sala", unique: true, img: "sofa-retratil.webp", link: "https://br.shp.ee/YBpLjtJj" },
   { id: "porta-temperos", nome: "Porta-Temperos Giratório com Potes de Vidro e Tampa Dosadora", preco: 29.60, categoria: "utensilios", unique: true, img: "porta-temperos.webp", link: "https://br.shp.ee/tMJyMhp3" },
-  // Preço varia conforme o tamanho escolhido (R$ 54,99 a R$ 172,99), então
-  // fica null para não prometer um valor errado ao convidado.
-  { id: "cesto-roupa-suja", nome: "Cesto de Roupa Suja de Bambu 72L com Tampa e Alças", preco: null, categoria: "lavanderia", unique: true, img: "cesto-roupa-suja.webp", link: "https://br.shp.ee/Cj57T9ti" },
-  { id: "varal-de-chao", nome: "Varal de Chão Dobrável Reforçado Portátil", preco: null, categoria: "lavanderia", unique: true, img: "varal-de-chao.webp", link: "https://shopee.com.br/Varal-de-Ch%C3%A3o-Dobr%C3%A1vel-Refor%C3%A7ado-Port%C3%A1til-Secar-Roupas-i.1251322845.22594854233" },
+  { id: "cesto-roupa-suja", nome: "Cesto de Roupa Suja de Bambu 72L com Tampa e Alças", preco: 54.99, categoria: "lavanderia", unique: true, img: "cesto-roupa-suja.webp", link: "https://br.shp.ee/Cj57T9ti" },
+  { id: "varal-de-chao", nome: "Varal de Chão Dobrável Reforçado Portátil", preco: 69.59, categoria: "lavanderia", unique: true, img: "varal-de-chao.webp", link: "https://shopee.com.br/Varal-de-Ch%C3%A3o-Dobr%C3%A1vel-Refor%C3%A7ado-Port%C3%A1til-Secar-Roupas-i.1251322845.22594854233" },
 ];
