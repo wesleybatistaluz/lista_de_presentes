@@ -103,10 +103,44 @@ só que a marcação fica salva apenas no navegador de quem clicou (via
 localStorage) — não é compartilhada entre visitantes diferentes nem entre
 dispositivos.
 
-## 4. Publicar
+## 4. Publicar e atualizar
 
-O repositório git local já está criado, com o primeiro commit feito na branch
-`main`. Nada foi enviado para a internet ainda.
+O site está publicado no GitHub Pages, a partir do repositório
+`wesleybatistaluz/lista_de_presentes`:
+
+**https://wesleybatistaluz.github.io/lista_de_presentes/**
+
+Para publicar uma alteração:
+
+```bash
+git add -A && git commit -m "descreva a mudança" && git push
+```
+
+O GitHub Pages leva cerca de 1 a 2 minutos para republicar.
+
+### ⚠️ Se a alteração não aparecer no site
+
+Quase sempre é **cache do navegador**, não um erro. O navegador guarda os
+arquivos `.js` e `.css` por alguns minutos e continua mostrando a versão antiga.
+
+1. **Recarregue forçando a atualização:** `Ctrl + Shift + R` (ou `Ctrl + F5`).
+   No celular, abra numa aba anônima.
+2. **Para garantir que TODOS os visitantes vejam na hora**, troque a versão nos
+   dois arquivos HTML. Procure por `?v=` em `index.html` e `presentes.html` e
+   coloque a data de hoje:
+
+   ```html
+   <link rel="stylesheet" href="css/style.css?v=2026-08-11">
+   <script src="js/presentes-data.js?v=2026-08-11"></script>
+   ```
+
+   Mudar esse número faz o navegador entender que é um arquivo novo e baixar de
+   novo, em vez de usar o que está guardado. Vale a pena fazer isso sempre que
+   você mexer na lista de presentes.
+
+Para conferir rapidamente se o servidor já tem a versão nova (sem depender do
+seu navegador), abra este endereço direto:
+`https://wesleybatistaluz.github.io/lista_de_presentes/js/presentes-data.js`
 
 Como o site é 100% estático e o banco (Supabase) é externo, **qualquer
 hospedagem de site estático funciona igual** — não existe nada rodando no
