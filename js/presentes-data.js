@@ -71,4 +71,12 @@ const PRESENTES = [
   { id: "porta-temperos", nome: "Porta-Temperos Giratório com Potes de Vidro e Tampa Dosadora", preco: 29.60, categoria: "utensilios", unique: true, img: "porta-temperos.webp", link: "https://br.shp.ee/tMJyMhp3" },
   { id: "cesto-roupa-suja", nome: "Cesto de Roupa Suja de Bambu 72L com Tampa e Alças", preco: 54.99, categoria: "lavanderia", unique: true, img: "cesto-roupa-suja.webp", link: "https://br.shp.ee/Cj57T9ti" },
   { id: "varal-de-chao", nome: "Varal de Chão Dobrável Reforçado Portátil", preco: 69.59, categoria: "lavanderia", unique: true, img: "varal-de-chao.webp", link: "https://shopee.com.br/Varal-de-Ch%C3%A3o-Dobr%C3%A1vel-Refor%C3%A7ado-Port%C3%A1til-Secar-Roupas-i.1251322845.22594854233" },
+
+  // --- Móveis (armário e poltronas) -------------------------------------
+  // Preços anotados são os promocionais em destaque no anúncio (Pix/cupom),
+  // então podem variar. Como o aviso no topo da página deixa claro que os
+  // modelos são apenas referência, isso não é problema.
+  { id: "armario-cozinha", nome: "Armário de Cozinha Compacta Fidelitá Barcelona 180cm 7 Portas 2 Gavetas", preco: 945.55, categoria: "cozinha", unique: true, img: "armario-cozinha.webp", link: "https://shopee.com.br/product/1072763470/22494218113" },
+  { id: "poltrona-beny", nome: "Poltrona Beny Luxo Pés de Madeira Linho Reforçada", preco: 499.74, categoria: "sala", unique: true, img: "poltrona-beny.webp", link: "https://www.mercadolivre.com.br/poltrona-beny-luxo-pes-madeira-linho-reforcada-sala-quarto/up/MLBU4222594894?pdp_filters=item_id%3AMLB7095872252" },
+  { id: "poltrona-decorativa", nome: "Poltrona Decorativa Alice Suede Cinza Reforçada", preco: 215.00, categoria: "sala", unique: true, img: "poltrona-decorativa.webp", link: "https://www.mercadolivre.com.br/poltrona-decorativa-amamentacao-confortavel-para-sala-recepcao-manicure-cadeira-reforcada-alice-suede-cinza/p/MLB26864658?pdp_filters=item_id%3AMLB4296338388" },
 ];
